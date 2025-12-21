@@ -1,0 +1,17 @@
+class Solution:
+    def numJewelsInStones(self, jewels: str, stones: str) -> int:
+        stone_dict = defaultdict(int)
+
+        for char in stones:
+            stone_dict[char] += 1
+        
+        count = 0
+        for char in jewels:
+            if char in stones:
+                count += stone_dict[char] 
+            else:
+                 continue
+        
+        return count
+
+        
