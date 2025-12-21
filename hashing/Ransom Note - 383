@@ -1,0 +1,20 @@
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        mag_dict = defaultdict(int)
+        ransom_dict = defaultdict(int)
+        
+        for s in ransomNote:
+            ransom_dict[s] += 1
+        
+        for r in magazine:
+            mag_dict[r] += 1
+
+        for letter in ransom_dict:
+            if letter not in mag_dict:
+                return False
+            elif ransom_dict[letter] > mag_dict[letter]:
+                return False
+            else:
+                 continue
+
+        return True
