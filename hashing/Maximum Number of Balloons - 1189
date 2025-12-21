@@ -1,0 +1,28 @@
+//comment
+//can use text.count() to simplify this
+
+class Solution:
+    def maxNumberOfBalloons(self, text: str) -> int:
+        count = {
+            "b" : 0,
+            "a" : 0,
+            "l" : 0,
+            "o" : 0,
+            "n" : 0
+        }
+        
+        for letter in text:
+            if letter not in count:
+                continue
+            else:
+                count[letter] += 1
+
+        for letter in count:
+            if letter == "l" or letter == "o":
+                count[letter] = count[letter]//2
+            else:
+                continue
+
+
+        return min(count.values())
+
