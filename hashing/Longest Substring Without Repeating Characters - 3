@@ -1,0 +1,19 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        
+        chardict = defaultdict(int)
+
+        left = right = curr = 0
+
+        while right < len(s):
+            chardict[s[right]] += 1
+
+            while chardict[s[right]] >= 2:
+                chardict[s[left]] -= 1
+                left += 1
+
+            curr = max(curr, right - left + 1)
+            
+            right += 1
+
+        return curr
