@@ -1,0 +1,31 @@
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+
+        #basically removes all slashes
+        list_path = path.split('/')
+        stack = []
+
+        if not list_path:
+            return "/"
+
+        for pth in list_path:
+            if pth == "." or pth == "":
+                continue
+            elif pth == "..":
+                if stack:
+                    stack.pop()
+                else:
+                    continue
+            else:
+                stack.append(f'/{pth}')
+
+
+        if stack:
+            return ''.join(stack)
+        else: 
+            return "/"
+
+    #another possible solution
+    #only append the directories to stack (also delete when ..)
+    #then we can do '/' + '/'.join(stack)
+                
